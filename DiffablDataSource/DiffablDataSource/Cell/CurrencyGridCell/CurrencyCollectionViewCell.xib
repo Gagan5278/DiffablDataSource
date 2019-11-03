@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CurrencyCollectionViewCell" customModule="PayPay" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CurrencyCollectionViewCell" customModule="DiffablDataSource" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="130" height="108"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -65,6 +65,7 @@
                 <outlet property="checkMarkImageView" destination="e54-WX-eeb" id="b6c-hw-Ucn"/>
                 <outlet property="currencyRateLabel" destination="BGa-Sn-yRl" id="OBP-s7-Fvb"/>
                 <outlet property="currencySymbleLabel" destination="M8c-Y2-eSM" id="OUe-Zk-muE"/>
+                <outlet property="gradiantView" destination="0Ng-8I-QSZ" id="xKu-pP-l7f"/>
             </connections>
             <point key="canvasLocation" x="60.869565217391312" y="171.42857142857142"/>
         </collectionViewCell>

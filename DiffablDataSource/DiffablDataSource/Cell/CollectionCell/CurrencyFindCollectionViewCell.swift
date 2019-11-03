@@ -25,7 +25,7 @@ class CurrencyFindCollectionViewCell: UICollectionViewCell, Cell {
     //delegate
     var delegate: UpdateCurrencyRate?
     //var to store actual rate of selected currency
-    var selectedCurrencyActualRate: Double = 1.0
+    static var selectedCurrencyActualRate: Double = 1.0
     //MARK:- View life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +35,7 @@ class CurrencyFindCollectionViewCell: UICollectionViewCell, Cell {
     func config(with Object: SelectedCurrencyInfo) {
         selectedCurrencyLabel.text = Object.currenyName
         amountTextfield.text = "\(Object.currrencyValue)"
-        self.selectedCurrencyActualRate = Object.currrencyValue
+        CurrencyFindCollectionViewCell.selectedCurrencyActualRate = Object.currrencyValue
     }
     
     //MARK:- Button Action
@@ -44,7 +44,7 @@ class CurrencyFindCollectionViewCell: UICollectionViewCell, Cell {
         amountTextfield.resignFirstResponder()
         //2.
         if !amountTextfield.text!.isEmpty, let enterdDoubleAmount = Double(amountTextfield.text!) {
-            delegate?.changeCurrencyRate(enteredValue: enterdDoubleAmount*(1.0/self.selectedCurrencyActualRate), reuiredEnteredAmount:enterdDoubleAmount)
+            delegate?.changeCurrencyRate(enteredValue: enterdDoubleAmount*(1.0/CurrencyFindCollectionViewCell.selectedCurrencyActualRate), reuiredEnteredAmount:enterdDoubleAmount)
         }
     }
     

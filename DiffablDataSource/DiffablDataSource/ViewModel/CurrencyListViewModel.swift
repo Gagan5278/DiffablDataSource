@@ -14,6 +14,7 @@ protocol  CurrencyConverterProtocol{
     var getSymbolForCurrencyCode: String? {get}
     var getCurrencyRate: Double {get}
     var myComputedProperty:Double {get set}
+    var currencyActualRate: Double {get}
 }
 
 extension ExchangeRate: CurrencyConverterProtocol {
@@ -35,6 +36,10 @@ extension ExchangeRate: CurrencyConverterProtocol {
     
     var getCurrencyRate: Double {
         return self.rate*ExchangeRate.updatedcalculatedRate
+    }
+    
+    var currencyActualRate: Double {
+        return self.rate
     }
     
     var getSymbolForCurrencyCode: String? {

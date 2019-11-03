@@ -10,6 +10,7 @@ import UIKit
 
 class CurrencyCollectionViewCell: UICollectionViewCell, Cell {
     //IBOutlets
+    @IBOutlet weak var gradiantView: UIView!
     @IBOutlet weak var checkMarkImageView: UIImageView!
     @IBOutlet weak var currencySymbleLabel: UILabel!
     @IBOutlet weak var currencyRateLabel: UILabel!
@@ -20,8 +21,8 @@ class CurrencyCollectionViewCell: UICollectionViewCell, Cell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if let view = self.viewWithTag(10) {
-            view.layer.configureGradientBackground(UIColor.purple.cgColor, UIColor.blue.cgColor, UIColor.white.cgColor)
+        DispatchQueue.main.async { [weak self] in
+            self?.gradiantView.layer.configureGradientBackground(UIColor.purple.cgColor, UIColor.blue.cgColor, UIColor.white.cgColor)
         }
     }
 

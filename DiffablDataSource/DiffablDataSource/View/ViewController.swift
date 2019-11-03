@@ -38,17 +38,9 @@ class ViewController: UIViewController {
         viewModel.getAllCurrenciesAndExchangeRates()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        currencyCollectionView.collectionViewLayout.invalidateLayout()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if let flowLayout = currencyCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            currencyCollectionView.collectionViewLayout.invalidateLayout()
-            currencyCollectionView.collectionViewLayout = flowLayout
-        }
+
     }
     
     //MARK:- Add activity indicator on view
@@ -84,7 +76,9 @@ class ViewController: UIViewController {
     
     //MARK:- Did select currency
     private func didSelect(exchnage: ExchangeRate, at index: Int, cell: UICollectionViewCell) {
+        //1.
         ExchangeRate.updatedcalculatedRate = 1.0
+        //2.
         if exchnage.fxPair == selectedCurrency.currenyName {
             viewModel.exchangeRates[index].isSelectedItem = false
             selectedCurrency = SelectedCurrencyInfo(id:UUID().uuidString, currenyName: "USD", currrencyValue: 1.0)
@@ -96,7 +90,11 @@ class ViewController: UIViewController {
             viewModel.exchangeRates[index].isSelectedItem = true
             selectedCurrency = SelectedCurrencyInfo(id:UUID().uuidString, currenyName: exchnage.fxPair, currrencyValue: exchnage.rate*selectedExchangeRate)
         }
+        //3.
+        CurrencyFindCollectionViewCell.selectedCurrencyActualRate = exchnage.currencyActualRate
+        //4.
         previousSelectedIndex = index
+        //5.
         adapter.performUpdate{
             //Uncomment below if need auto scroll to top
 //            self.currencyCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0),at: .top,animated: true)
